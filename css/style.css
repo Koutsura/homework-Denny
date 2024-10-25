@@ -1,0 +1,389 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+/* Cover image styles */
+#cover {
+    position: fixed; /* Fix the cover image in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Send it to the back */
+    overflow: hidden;
+}
+#cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+#header1 {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+    margin-right: 20px;
+  }
+  #header1 p {
+    text-align: justify; /* Align text to both left and right */
+}
+
+/* id untuk gambar berputar */
+#muter img {
+    height: 150px; /* Tinggi seragam */
+    width: 150px; /* Lebar seragam */
+  }
+  
+  #muter {
+    width: 300px; /* Lebar yang disesuaikan */
+    height: 300px; /* Tinggi yang disesuaikan */
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: gallery 20s ease-in-out infinite; /* Easing untuk animasi yang mulus */
+    cursor: pointer;
+    
+  }
+  
+  #muter span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(150px); /* Jarak Z yang diperbesar untuk lebih banyak spasi */
+    /* -webkit-box-reflect: below 2.5px linear-gradient(transparent, transparent, rgba(3, 3, 3, 0.2)); */
+  }
+  
+  #muter span img {
+    position: absolute;
+    border-radius: 10px;
+    border: 6px ridge #ccc;
+    opacity: 0.9; /* Transparansi sedikit untuk efek kedalaman */
+  }
+  
+  @keyframes gallery {
+    0% {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(1000px) rotateY(360deg);
+    }
+  }
+  
+ /*  gambar terbaru
+ */
+
+ /* card favorit */
+/* card favorit */
+.dasar {
+    width: 200px;
+    height: 300px;
+    background-color: #0b0b0f;
+    border-radius: 8px;
+    color: white;
+    padding: 20px;
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25); /* Menggunakan hanya box-shadow */
+    transform: scale(0.75) rotateY(-30deg) rotateX(45deg) translateZ(4.5rem);
+    transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+    transition: 0.6s ease transform;
+  }
+  
+  .dasar:hover {
+    transform: scale(1) rotateY(0) rotateX(0) translateZ(0);
+  }
+  
+  /* Menghapus pseudo-element untuk menghindari bayangan ganda */
+  .dasar::before,
+  .dasar::after {
+    display: none; /* Menonaktifkan pseudo-element */
+  }
+  
+  /* Definisikan tata letak grid untuk kartu */
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom yang sama besar */
+    gap: 30px; /* Jarak antara kolom */
+    justify-items: center; /* Menyelaraskan kartu ke tengah kolom */
+    align-items: start; /* Menyelaraskan kartu ke atas */
+    width: 100%; /* Lebar penuh untuk bagian */
+  }
+  
+  .card-content {
+    margin-top: 10px;
+  }
+  
+  .card-content h3 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .card-content p {
+    margin-top: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .dasar img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Bagian Kiri: Judul/Deskripsi */
+  .left-section {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .left-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .left-section p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  /* Bagian Kanan: Kontainer Kartu */
+  .right-section {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+  }
+  
+/* logo */
+/* Logo scrolling animation */
+/* Logo scrolling animation */
+.logo-container {
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.logo {
+  display: flex;
+  gap: 1rem;
+  animation: infinite-scroll 10s linear infinite;
+  align-items: center;
+  
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+}
+
+@keyframes infinite-scroll {
+  from {
+      transform: translateX(100vw);
+  }
+  to {
+      transform: translateX(-100vw);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+/* Animasi untuk gambar */
+@keyframes slideInFromRight {
+  0% {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.text-animation {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.image-animation {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+/* Optional: Untuk memberikan jeda animasi */
+.delay-1 {
+  animation-delay: 0.5s;
+}
+.delay-2 {
+  animation-delay: 1s;
+}
+
+
+@media only screen and (max-width: 767px) {
+  
+  div[style*="display: flex"] {
+    display: block !important; /* Ubah menjadi block di layar kecil */
+    align-items: flex-start; /* Rata atas */
+}
+
+#header1 {
+    text-align: center; /* Rata tengah untuk tampilan mobile */
+    padding: 0 10px; /* Tambahkan padding untuk tampilan yang lebih baik */
+    margin: 0 auto; /* Center header jika diperlukan */
+}
+
+p {
+    font-size: 14px; /* Ukuran teks lebih kecil untuk layar kecil */
+    line-height: 1.5; /* Tinggi garis lebih baik untuk membaca */
+    margin: 15px 0; /* Margin atas dan bawah */
+    padding: 0 10px; /* Tambahkan padding sisi */
+}
+  
+
+#muter {
+  width: 100px; /* Ukuran lebih kecil untuk layar mobile */
+  height: 100px;
+  animation: gallery 15s ease-in-out infinite; /* Animasi lebih cepat untuk mobile */
+  left: 35%; /* Menempatkan di tengah horizontal */
+  transform: translate(-50%, -50%); /* Menggeser untuk memusatkan */
+  margin-top: 100px !important;
+  margin-bottom: 50px !important;
+}
+
+#muter img {
+  height: 100px; /* Ukuran gambar lebih kecil */
+  width: 100px;
+}
+
+#muter span {
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(130px); /* Sesuaikan jarak Z */
+}
+
+#muter span img {
+  border-radius: 8px;
+  border: 4px ridge #ccc; /* Ukuran border lebih kecil untuk mobile */
+}
+
+  .card-container {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 20px;
+  }
+
+  .dasar {
+    max-width: 100%; /* Make the card full width for mobile */
+    box-shadow: 0.5rem 0.5rem 1.5rem rgba(0, 0, 0, 0.15); /* Lighter shadow on mobile */
+  }
+
+  .dasar:hover {
+    transform: scale(1.05); /* Simple scale effect on hover */
+  }
+
+  .col-2 {
+    flex: 0 0 48%; /* Mengatur lebar kolom agar sesuai dengan dua gambar per slide */
+    max-width: 48%; /* Menghindari overflow */
+    margin: 0; /* Menghilangkan margin untuk menjaga tata letak rapi */
+    margin-left: 5px; /* Menggeser kolom ke kanan */
+    margin-top: 20px;
+}
+  .card-img-top{
+    width: 100% !important; 
+    object-fit: cover;
+    height: auto !important;
+  }
+
+  #imgj1 {
+    width: 100% !important; /* Gambar memenuhi lebar penuh */
+    height: auto !important; /* Menjaga proporsi gambar */
+    margin-bottom: 20px !important; /* Memberikan jarak antara gambar dan teks */
+}
+#imgj2 {
+  width: 100% !important; /* Gambar memenuhi lebar penuh */
+  height: auto !important; /* Menjaga proporsi gambar */
+  margin-bottom: 20px !important; /* Memberikan jarak antara gambar dan teks */
+}
+  
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  div[style*="display: flex"] {
+    display: block !important; /* Ubah menjadi block di layar kecil */
+    align-items: flex-start; /* Rata atas */
+}
+
+#header1 {
+    text-align: center; /* Rata tengah untuk tampilan mobile */
+    padding: 0 10px; /* Tambahkan padding untuk tampilan yang lebih baik */
+    margin: 0 auto; /* Center header jika diperlukan */
+}
+
+p {
+    font-size: 14px; /* Ukuran teks lebih kecil untuk layar kecil */
+    line-height: 1.5; /* Tinggi garis lebih baik untuk membaca */
+    margin: 15px 0; /* Margin atas dan bawah */
+    padding: 0 10px; /* Tambahkan padding sisi */
+}
+  
+
+#muter {
+  width: 100px; /* Ukuran lebih kecil untuk layar mobile */
+  height: 100px;
+  animation: gallery 15s ease-in-out infinite; /* Animasi lebih cepat untuk mobile */
+  left: 43%; /* Menempatkan di tengah horizontal */
+  transform: translate(-50%, -50%); /* Menggeser untuk memusatkan */
+  margin-top: 100px !important;
+  margin-bottom: 50px !important;
+}
+
+#muter img {
+  height: 120px; /* Ukuran gambar lebih kecil */
+  width: 120px;
+}
+
+#muter span {
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(200px); /* Sesuaikan jarak Z */
+}
+
+#muter span img {
+  border-radius: 8px;
+  border: 4px ridge #ccc; /* Ukuran border lebih kecil untuk mobile */
+}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  #muter {
+    width: 100px; /* Ukuran lebih kecil untuk layar mobile */
+    height: 100px;
+    animation: gallery 15s ease-in-out infinite; /* Animasi lebih cepat untuk mobile */
+    left: 9%; /* Menempatkan di tengah horizontal */
+    transform: translate(-50%, -50%); /* Menggeser untuk memusatkan */
+    margin-top: 100px !important;
+    margin-bottom: 50px !important;
+  }
+  
+  #muter img {
+    height: 100px; /* Ukuran gambar lebih kecil */
+    width: 100px;
+  }
+  
+  #muter span {
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(130px); /* Sesuaikan jarak Z */
+  }
+  
+  #muter span img {
+    border-radius: 8px;
+    border: 4px ridge #ccc; /* Ukuran border lebih kecil untuk mobile */
+  }
+}
